@@ -14,9 +14,10 @@ public class MainController {
 
     @GetMapping("/")
     public String home(Model model, HttpSession session) {
-        Object game = session.getAttribute("game");
+        Object attr = session.getAttribute("game");
 
-        if (game != null) {
+        if (attr != null) {
+            Game game = (Game) attr;
             model.addAttribute("game", game);
             return "game";
         }
@@ -35,7 +36,7 @@ public class MainController {
         Game game = new Game(fivePlayer, player1, player2, player3, player4, player5);
 
         session.setAttribute("game", game);
-        model.addAttribute("game", game.getPlayers());
+        model.addAttribute("game", game);
         return "redirect:/";
     }
 
