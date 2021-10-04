@@ -1,0 +1,41 @@
+html {
+    height: 100%;
+}
+
+body {
+    background: radial-gradient(green, black) no-repeat;
+}
+
+.player-input {
+    margin: 10px;
+    padding: 50px;
+    border: yellow solid 1px;
+    display: grid;
+}
+
+.submit {
+    width: fit-content;
+    height: 30px;
+    margin-top: 20px;
+    border: none;
+    background: yellow;
+}
+
+.name {
+    border: none;
+    margin: 5px;
+    background: gray;
+    color: whitesmoke;
+}
+
+.name::placeholder {
+    color: whitesmoke;
+}
+
+#name5 {
+    visibility: collapse;
+}
+
+.checkbox-label {
+    color: whitesmoke;
+}
