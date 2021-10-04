@@ -19,4 +19,7 @@ public class Game {
     public Player[] getPlayers() {
         return players;
     }
+    public void addRound(){
+        rounds.addLast(new Round());
+    }
 }
