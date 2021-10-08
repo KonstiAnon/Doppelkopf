@@ -36,13 +36,31 @@ public class MainController {
         Game game = new Game(fivePlayer, player1, player2, player3, player4, player5);
 
         session.setAttribute("game", game);
-        model.addAttribute("game", game);
         return "redirect:/";
     }
 
     @PostMapping("/newGame")
     public String newGame(HttpSession session) {
         session.invalidate();
+        return "redirect:/";
+    }
+
+    @PostMapping("/addRound")
+    public String addRound(Model model, HttpSession session, @RequestParam(name = "solo", defaultValue = "false") boolean solo,
+                           @RequestParam(name = "soloWon", defaultValue = "false") boolean soloWon,
+                           @RequestParam(name = "bock", defaultValue = "false") boolean bock,
+                           @RequestParam(name = "points") int points,
+                           @RequestParam(name = "player1") int player1,
+                           @RequestParam(name = "player2") int player2) {
+        Game game = (Game) session.getAttribute("game");
+        game.addRound(solo, soloWon, bock, points, player1, player2);
+        return "redirect:/";
+    }
+
+    @PostMapping("deleteRound")
+    public String deleteRound(Model model, HttpSession session){
+        Game game = (Game) session.getAttribute("game");
+        game.deleteRound();
         return "redirect:/";
     }
 
